@@ -16,20 +16,13 @@ var connection = mysql.createConnection({
 });
 
 connection.connect(function(err) {
-    if (err) throw err;
-
-    start();
+    if (err) { 
+        console.error("error connecting: " + err.stack);
+        return;
+    }
+    console.log("connected as id " + connection.threadID);
 });
 
-function start() {
 
-    connection.query("SELECT * FROM tacos", function(err, res) {
-        if (err) throw err;
 
-        for (var i = 0; i < res.length; i++) {
-            console.log(res[i].id + " | " + res[i].taco_name + " | " + res[i].shell + " | " + res[i].vegetarian + " | " + res[i].picked_up)
-        }
-
-    })
-
-}
+module.exports = connection;
