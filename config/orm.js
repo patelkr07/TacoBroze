@@ -51,6 +51,4 @@ var orm = {
 };
 
 
-
-console.log(connection);
-
+module.exports = orm;
