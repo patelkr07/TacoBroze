@@ -1,0 +1,38 @@
+<h1>TacoBroze</h1>
+
+<h2>Normal Tacos</h2>
+
+<ul>
+    {{#each tacos}}
+      {{#unless vegetarian}}
+        {{> tacos/taco-block vegetarian=true}}
+      {{/unless}}
+    {{/each}}        
+</ul>
+
+<h2>Vegetarian Tacos</h2>
+
+<ul>
+  {{#each tacos}}
+    {{#if vegetarian}}
+      {{> tacos/taco-block vegetarian=false}}
+    {{/if}}
+  {{/each}}
+</ul>
+
+<h2>Add a Taco</h2>
+<form class="create-form">
+
+    <div class="form-group">
+        <label for="ca">Taco Name:</label>
+        <input type="text" id="ca" name="taco_name">
+    </div>
+
+    <div class="form-group">
+        <label for="vegetarian">Shell?</label><br>
+        <input type="radio" name="vegetarian" value="1" checked> Vegetarian!<br>
+        <input type="radio" name="vegetarian" value="0"> Non-Vegetarian
+    </div>
+
+    <button type="submit">Add Taco</button>
+</form>
